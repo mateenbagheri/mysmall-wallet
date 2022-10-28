@@ -1,0 +1,10 @@
+{
+    "mysql": {
+        "address":"localhost",
+        "password":"1234",
+        "port":"3306",
+        "username":"root",
+        "schema":"dokichallenge",
+        "driver": "mysql"
+    }
+}
