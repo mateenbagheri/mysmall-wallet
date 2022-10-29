@@ -8,6 +8,6 @@ import (
 func TransactionRoute(router *gin.Engine) {
 	transaction := router.Group("/transaction")
 	{
-		transaction.POST("/", controller.AddTransaction())
+		transaction.POST("/", controller.AddTransaction)
 	}
 }

@@ -8,6 +8,6 @@ import (
 func UserRoute(router *gin.Engine) {
 	user := router.Group("/user")
 	{
-		user.GET("/:UserID/balance", controller.GetUserBalance())
+		user.GET("/:UserID/balance", controller.GetUserBalance)
 	}
 }
