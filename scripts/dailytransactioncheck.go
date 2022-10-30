@@ -10,8 +10,7 @@ import (
 
 func DailySumCalculator() {
 	var result sql.NullFloat64
-	now := time.Now().Format("2006-01-02")
-	result, err := service.SelectDailyAmount(now)
+	result, err := service.SelectDailyAmount()
 	log.Println("Task is being performed at:", time.Now())
 	if err != nil {
 		log.Fatal("something wrong with database calculations. Error:", string(err.Error()))

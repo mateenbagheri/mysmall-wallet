@@ -47,14 +47,13 @@ func InsertTransaction(t models.Transaction) (models.Reference, error) {
 	return result, nil
 }
 
-func SelectDailyAmount(now string) (sql.NullFloat64, error) {
+func SelectDailyAmount() (sql.NullFloat64, error) {
 	var dailyAmount sql.NullFloat64
 	result, err := Mysql.Query(
 		`
-		SELECT sum(T.amount) AS amount
-		FROM transactions AS T
-		WHERE T.transaction_date = ?
-		`, now,
+		SELECT amount
+		FROM daily_transactions_sum_view
+		`,
 	)
 
 	if err != nil {
