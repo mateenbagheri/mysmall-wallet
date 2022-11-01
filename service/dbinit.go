@@ -6,4 +6,7 @@ import (
 	"github.com/mateenbagheri/mysmall-wallet/configs"
 )
 
-var Mysql *sql.DB = configs.ConnectMySQL()
+
+const setLimits bool = true
+
+var Mysql *sql.DB = configs.ConnectMySQL(setLimits)

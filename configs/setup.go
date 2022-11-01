@@ -9,7 +9,7 @@ import (
 
 var confs Config
 
-func ConnectMySQL() (db *sql.DB) {
+func ConnectMySQL(setLimits bool) *sql.DB {
 	confs, _ = LoadConfig()
 
 	address := confs.MySql.Address
@@ -20,6 +20,7 @@ func ConnectMySQL() (db *sql.DB) {
 	port := confs.MySql.Port
 
 	connectionString := user + ":" + password + "@tcp(" + address + ":" + port + ")/" + schema
+
 	db, err := sql.Open(driver, connectionString)
 
 	if err != nil {
@@ -27,7 +28,10 @@ func ConnectMySQL() (db *sql.DB) {
 		log.Fatal("could not connect to mysql database. Error:", string(err.Error()))
 	}
 
-	log.Println("connected to mysql Database.")
+	if setLimits {
+		db.SetMaxOpenConns(10)
+		db.SetMaxIdleConns(10)
+	}
 
 	return db
 }
