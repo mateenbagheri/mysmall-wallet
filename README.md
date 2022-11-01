@@ -30,4 +30,4 @@ after this, you will have all dependancies installed. Now, for running the appli
 go run cmd/main.go
 ```
 
-You also need an sql database to run migrations on. You can set up your database and schema preferences in `envs/evs.json`
+You also need a mysql database to run migrations on. You can set up your database and schema preferences in `envs/evs.json`
